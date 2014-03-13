@@ -2,11 +2,12 @@
 <html>
 	<head>
 		<title>Squeaker</title>
+		<meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
 		<style>
 			body {
 				margin-left: auto;
 				margin-right: auto;
-				width: 400px;
+				max-width: 400px;
 			}
 			h1, h2, form {
 				text-align: center;
@@ -26,7 +27,7 @@
 		<h2 id="subtitle">Daycare for the Brightest Parents of the 21st-Century</h2>
 
 		{% if login %}
-			<b style="color:red">WARNING: DO NOT USE A PASSWORD YOU MIGHT NORMALLY USE</b>
+			<p style="text-align:center"><b style="color:red">WARNING: DO NOT USE A PASSWORD YOU MIGHT NORMALLY USE</b></p>
 			<form name="loginform" action="login" method="POST">
 				<table style="margin-left: auto; margin-right: auto;">
 				<tr>
