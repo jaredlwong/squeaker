@@ -86,12 +86,12 @@ def logout():
 def index():
     ui = check_cookie(request.cookies.get("cookie"))
     if not ui:
-        return render_template('index.html', login=True)
+        return render_template('squeaker.html', login=True)
     posts = []
     for usr, ui in users.iteritems():
         for post in ui.posts:
             posts.append((usr, post))
-    return render_template('index.html', login=False, posts=posts)
+    return render_template('squeaker.html', login=False, posts=posts)
 
 def post():
     """Make a post by adding post to user info"""
