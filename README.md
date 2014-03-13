@@ -35,8 +35,8 @@ To run it as a normal fcgi script under apache, run:
 
 Note, no need to do anything extra beyond pointing apache to this directory.
 
-For MIT Students Looking To Run Python App on Using Scripts
------------------------------------------------------------
+For MIT Students Looking To Run Python App Using Scripts
+--------------------------------------------------------
 These instructions are meant for MIT affiliates with an athena account who want
 to host a python application using scripts.
 
