@@ -12,12 +12,12 @@ website on scripts on athena at MIT.
 
 Dependencies:
 -------------
-MarkupSafe-0.19
-flup-1.0.2
-itsdangerous-0.23
-Flask-0.10.1
-Jinja2-2.7.2
-Werkzeug-0.9.4
+- MarkupSafe-0.19
+- flup-1.0.2
+- itsdangerous-0.23
+- Flask-0.10.1
+- Jinja2-2.7.2
+- Werkzeug-0.9.4
 
 To install dependencies locally into lib folder run:
 
