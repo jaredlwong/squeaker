@@ -20,7 +20,6 @@ endef
 export HTACCESS
 
 default:
-	echo $(FCGI_NAME)
 	cp app.fcgi $(FCGI_NAME).fcgi
 	echo "$$HTACCESS" > .htaccess
 
