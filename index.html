@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Squeaker</title>
+	</head>
+	<body>
+
+		{% if not login %}
+			<div id="header">
+				<a href="{{ url_for('logout') }}">Log out</a>
+			</div>
+		{% endif %}
+
+	{# Pick a random title for the page. This is funny for about 3 seconds. #}
+	{% set adjectives = ["Inquisitive", "Responsible", "Patriotic", 
+                             "Trustworthy", "Sustainable", "Objective", 
+                             "Disciplined", "Sensible", "Ethical", "Vigilant", 
+                             "Principled", "Awesome"] %}
+        {% set nouns = ["Thinking", "Policy", "Dialogue", "Learning", 
+                        "Discourse", "Research", "Advocacy"] %}
+        {% set adverbs = ["best", "brightest", "foremost", "leading", 
+                          "proven", "loyal", "brave", "meritorious", 
+                          "shrewd", "important", "skillful"] %}
+        {% set pluralnouns = ["thinkers", "minds", "students", "soldiers",
+                              "advocates", "representatives", "researchers"] %}
+        {% set concepts = ["21st-century", "next generation", 
+                           "new world order", "United States", 
+                           "counterinsurgency", "information superhighway"] %}
+
+		<h1><a href="{{ url_for('index') }}">Zoobar Foundation for {{ adjectives|random }}
+		{{ nouns|random }}</a></h1>
+
+		<h2>Supporting the {{ adverbs|random }}
+		{{ pluralnouns|random }} of the {{ concepts|random }}</h2>
+
+		{% if login %}
+			<div id="login" class="centerpiece">
+			<form action="login" method="POST">
+				<table>
+				<tr>
+					<td>Username:</td>
+					<td><input type="text" name="login_username"
+					autocomplete="no" value="{{ login_username }}"></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td colspan=2><input type="password" name="login_password" autocomplete="no">
+					<input type="submit" name="submit_login" value="Log in">
+					<input type="submit" name="submit_registration" value="Register">
+					</td>
+				</tr>
+				</table>
+			</form>
+			</div>
+			<script>document.loginform.login_username.focus();</script>
+		{% else %}
+			<form action="post" method="POST">
+				<input type="text" name="squeak">
+				<input type="submit" name="submit_squeak" value="Squeak">
+			</form>
+
+			{% for usr, post in posts %}
+				<p><b>{{ usr | safe }}</b> {{ post | safe }}</p>
+			{% endfor %}
+		{% endif %}
+	</body>
+</html>
