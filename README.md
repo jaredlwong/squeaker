@@ -1,3 +1,15 @@
+Squeaker
+========
+A very minimal, and very poor website meant to experiment hacking.
+
+Originally conceived for a presentation on cross-site scripting.
+
+The name is a knock-off of Twitter.
+
+The presentation was for 6.UAT at MIT. The fcgi script is meant to host this
+website on scripts on athena at MIT.
+
+
 Dependencies:
 -------------
 MarkupSafe-0.19
