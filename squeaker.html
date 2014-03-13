@@ -2,6 +2,13 @@
 <html>
 	<head>
 		<title>Squeaker</title>
+		<style>
+			body {
+				margin-left: auto;
+				margin-right: auto;
+				width: 600px;
+			}
+		</style>
 	</head>
 	<body>
 
@@ -27,8 +34,7 @@
                            "new world order", "United States", 
                            "counterinsurgency", "information superhighway"] %}
 
-		<h1><a href="{{ url_for('index') }}">Zoobar Foundation for {{ adjectives|random }}
-		{{ nouns|random }}</a></h1>
+		<h1><a href="{{ url_for('index') }}">Foundation for {{ adjectives|random }} {{ nouns|random }}</a></h1>
 
 		<h2>Supporting the {{ adverbs|random }}
 		{{ pluralnouns|random }} of the {{ concepts|random }}</h2>

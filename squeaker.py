@@ -10,8 +10,10 @@ from flask import url_for
 from flask import g
 
 ###############################################################################
-UserInfo = collections.namedtuple('UserInfo', ['usr', 'pwd', 'tok', 'posts'])
+UserInfo = collections.namedtuple('UserInfo', ['usr', 'pwd', 'tok'])
 users = {}
+PostInfo = collections.namedtuple('PostInfo', ['usr', 'post'])
+posts = collections.deque(maxlen=10)
 
 ###############################################################################
 def gen_token(pwd):
@@ -30,7 +32,7 @@ def register_usr(usr, pwd):
     # fail if usr exists
     if usr in users:
         return None
-    users[usr] = UserInfo(usr, pwd, gen_token(pwd), [])
+    users[usr] = UserInfo(usr, pwd, gen_token(pwd))
     return gen_cookie(users[usr])
 
 def login_usr(usr, pwd):
@@ -42,7 +44,7 @@ def login_usr(usr, pwd):
     # if pwds don't match, fail
     if users[usr].pwd != pwd:
         return None
-    users[usr] = UserInfo(usr, pwd, gen_token(pwd), users[usr].posts)
+    users[usr] = UserInfo(usr, pwd, gen_token(pwd))
     return gen_cookie(users[usr])
 
 def check_cookie(cookie):
@@ -86,17 +88,13 @@ def index():
     ui = check_cookie(request.cookies.get("cookie"))
     if not ui:
         return render_template('squeaker.html', login=True)
-    posts = []
-    for usr, ui in users.iteritems():
-        for post in ui.posts:
-            posts.append((usr, post))
     return render_template('squeaker.html', login=False, posts=posts)
 
 def post():
     """Make a post by adding post to user info"""
     ui = check_cookie(request.cookies.get("cookie"))
     if ui is not None:
-        ui.posts.append(request.form.get('squeak'))
+        posts.append(PostInfo(ui.usr, request.form.get('squeak')))
     return redirect(url_for('index'))
 
 ###############################################################################
