@@ -32,4 +32,5 @@ To run standalone version (meaning without any other webserver), run:
 To run it as a normal fcgi script under apache, run:
 
     make
-    ./app.fcgi
+
+Note, no need to do anything extra beyond pointing apache to this directory.

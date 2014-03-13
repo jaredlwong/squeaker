@@ -25,7 +25,7 @@ class ScriptNameStripper(object):
        return self.app(environ, start_response)
 
 if __name__ == '__main__':
-    if sys.argv[1] == 'standalone':
+    if len(sys.argv) >= 2 and sys.argv[1] == 'standalone':
         app.run(host='0.0.0.0')
     else:
         app = ScriptNameStripper(app)
