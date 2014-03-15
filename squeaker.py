@@ -9,6 +9,16 @@ from flask import render_template
 from flask import url_for
 from flask import g
 
+import sqlite3
+conn = sqlite3.connect('squeaker.db')
+
+cur = conn.cursor()
+cur.execute('''create table if not exists users
+               (usr text unique not null, pwd text not null, tok text)''')
+cur.execute('''create table if not exists posts
+               (id integer primary key autoincrement, usr text not null, post text)''')
+conn.commit()
+
 ###############################################################################
 UserInfo = collections.namedtuple('UserInfo', ['usr', 'pwd', 'tok'])
 users = {}
